@@ -1,18 +1,29 @@
 name: Test Project
+
 on: push
 
 jobs: 
-    test:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Get code
-          uses: actions/checkout@v4
-        - name: Install NodeJS 
-          uses: actions/setup-node@v4
-          with:
-            node-version: 18
-        - name: Install dependencies
-          run: npm ci
-        - name: Run tests
-          run: npm test
+  test:
+    runs-on: ubuntu-latest
 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "Using npm ci"
+            npm ci
+          else
+            echo "No lock file found, using npm install"
+            npm install
+          fi
+
+      - name: Run tests
+        run: npm test
