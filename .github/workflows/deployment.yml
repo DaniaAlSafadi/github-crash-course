@@ -53,7 +53,8 @@ jobs:
           fi
       
       - name: Build project
+        working-directory: second-action-react-demo
         run: npm run build
 
       - name: Deploy
-        run: ech "Deploying ..."
+        run: echo "Deploying ..."
