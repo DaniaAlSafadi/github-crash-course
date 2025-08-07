@@ -9,8 +9,6 @@ jobs:
     steps: 
       - name: Get code
         uses: actions/checkout@v3
-        with:
-          path: basics-exercise
 
       - name: Install dependencies 
         working-directory: basics-exercise
