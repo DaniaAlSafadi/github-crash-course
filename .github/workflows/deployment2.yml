@@ -1,0 +1,71 @@
+name: Deployment Exercise 2
+
+on: push
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Get code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies 
+        working-directory: basics-exercise
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "Using npm ci"
+            npm ci
+          else
+            echo "No lock file found, using npm install"
+            npm install
+          fi
+
+      - name: Lint
+        working-directory: basics-exercise
+        run: npm run lint 
+  
+  test:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Get code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies 
+        working-directory: basics-exercise
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "Using npm ci"
+            npm ci
+          else
+            echo "No lock file found, using npm install"
+            npm install
+          fi
+      - name: Test code
+        working-directory: basics-exercise
+        run: npm run test
+
+  deploy: 
+    runs-on: ubuntu-latest 
+
+    steps: 
+      - name: Get code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies 
+        working-directory: basics-exercise
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "Using npm ci"
+            npm ci
+          else
+            echo "No lock file found, using npm install"
+            npm install
+          fi
+
+      - name: Build code
+        working-directory: basics-exercise
+        run: npm run build
+
+      - name: Deploy code
+        working-directory: basics-exercise
+        run: echo "Deploying ..."
