@@ -14,7 +14,14 @@ jobs:
 
       - name: Install dependencies 
         working-directory: basics-exercise
-        run: npm install
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "Using npm ci"
+            npm ci
+          else
+            echo "No lock file found, using npm install"
+            npm install
+          fi
 
       - name: Lint
         working-directory: basics-exercise
