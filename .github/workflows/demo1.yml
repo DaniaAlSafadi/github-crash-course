@@ -1,0 +1,40 @@
+name: Events Demo 1
+
+on: 
+  pull_request:
+    types: 
+      - opened
+  workflow_dispatch: 
+    
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output event data
+        run: echo "${{ toJSON(github.event) }}"
+
+      - name: Get code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        working-directory: events-deep-dive
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "Using npm ci"
+            npm ci
+          else
+            echo "No lock file found, using npm install"
+            npm install
+          fi
+
+      - name: Test code
+        working-directory: events-deep-dive
+        run: npm run test
+
+      - name: Build code
+        working-directory: events-deep-dive
+        run: npm run build
+
+      - name: Deploy project
+        working-directory: events-deep-dive
+        run: echo "Deploying..."
