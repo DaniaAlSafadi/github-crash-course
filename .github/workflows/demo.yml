@@ -69,7 +69,7 @@ jobs:
         name: dist-files
         path: events-deep-dive/dist
     - name: Output contents
-      run: ls
+      run: ls events-deep-dive/dist
     - name: Deploy
       working-directory: events-deep-dive/dist
       run: echo "Deploying..."
