@@ -56,6 +56,13 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy
-        working-directory: events-deep-dive
-        run: echo "Deploying..."
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: dist-files
+        path: events-deep-dive/dist
+
+    - name: Deploy
+      working-directory: events-deep-dive/dist
+      run: echo "Deploying..."
+
