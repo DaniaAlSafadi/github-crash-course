@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - master
+    paths-ignore:
+      - '.github/workflows/*'
+  workflow_dispatch:
+
 jobs:
   test:
     runs-on: ubuntu-latest
