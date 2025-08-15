@@ -3,8 +3,10 @@ name: Deployment Exercise 2
 on:
   push:
     paths-ignore:
-      - '.github/workflows/*'
-
+      - '.github/workflows/deployment1.yml'
+      - '.github/workflows/deployment.yml'
+      - '.github/workflows/demo1.yml'
+      - '.github/workflows/demo.yml'
 jobs:
   lint:
     runs-on: ubuntu-latest
