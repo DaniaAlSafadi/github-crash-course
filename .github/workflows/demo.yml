@@ -4,8 +4,10 @@ on:
     branches:
       - master
     paths-ignore:
-      - '.github/workflows/*'
-  workflow_dispatch:
+      - '.github/workflows/deployment1.yml'
+      - '.github/workflows/deployment2.yml'
+      - '.github/workflows/demo1.yml'
+      - '.github/workflows/deployment.yml'
 
 jobs:
   test:
