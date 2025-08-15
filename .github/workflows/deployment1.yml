@@ -1,6 +1,9 @@
 name: Deployment Exercise 1
 
-on: push
+on:
+  push:
+    paths-ignore:
+      - '.github/workflows/*'
 
 jobs:
   deploy: 
