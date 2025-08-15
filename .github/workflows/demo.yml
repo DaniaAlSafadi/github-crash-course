@@ -54,6 +54,7 @@ jobs:
         run: npm run build
       - name: Publish JS filename
         id: publish
+        working-directory: events-deep-dive
         run:  find dist/assets/*.js -type f -execdir echo 'script-file-js={}' >> $GITHUB_OUTPUT ';' 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
