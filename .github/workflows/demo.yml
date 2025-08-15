@@ -1,0 +1,61 @@
+name: Deploy website
+on:
+  push:
+    branches:
+      - main
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        working-directory: events-deep-dive
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "Using npm ci"
+            npm ci
+          else
+            echo "No lock file found, using npm install"
+            npm install
+          fi
+      - name: Lint code
+        working-directory: events-deep-dive
+        run: npm run lint
+      - name: Test code
+        working-directory: events-deep-dive
+        run: npm run test
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        working-directory: events-deep-dive
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "Using npm ci"
+            npm ci
+          else
+            echo "No lock file found, using npm install"
+            npm install
+          fi
+      - name: Build website
+        working-directory: events-deep-dive
+        run: npm run build
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-files
+          path: |
+            dist
+            package.json
+        
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        working-directory: events-deep-dive
+        run: echo "Deploying..."
