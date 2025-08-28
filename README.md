@@ -56,7 +56,7 @@ Automates linting, testing, building, and deploying the `basics-exercise` Node.j
    - Runs tests with `npm run test`.  
    - Builds the project using `npm run build`.  
    - Simulates deployment with `echo "Deploying ..."`.
-   - 
+
 **Usage / Notes**
 
 - Workflow triggers on push, ignoring:
