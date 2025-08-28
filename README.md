@@ -2,10 +2,9 @@
 
 | # | Workflow Name | File | Triggers | Main Steps |
 |---|---------------|------|----------|------------|
-| 1 | Deploy Project | deployment.yml | push (ignoring certain workflows), workflow_dispatch | Test, Deploy |
+| 1 | Deploy Project | deployment.yml | push (ignoring certain workflows), workflow_dispatch | Install dependencies, Test, Build, Deploy |
 | 2 | Deployment Exercise 1 | deployment1.yml | push (ignoring certain workflows) | Get code, Install dependencies, Lint, Test, Build, Deploy |
-| 3 | Deployment Exercise 2 | deployment2.yml | push (ignoring certain workflows), workflow_dispatch | Test, Deploy |
-
+| 3 | Deployment Exercise 2 | deployment2.yml | push (ignoring certain workflows), workflow_dispatch | Install dependencies, Test, Build, Deploy |
 ---
 
 ## 1. Deploy Project (deployment.yml)
