@@ -1,19 +1,3 @@
-flowchart TD
-    A[Deploy Project<br>(deployment.yml)] --> B[Test]
-    B --> C[Deploy]
-
-    D[Deployment Exercise 1<br>(deployment1.yml)] --> E[Get Code]
-    E --> F[Install Dependencies]
-    F --> G[Lint]
-    G --> H[Test Code]
-    H --> I[Build Code]
-    I --> J[Deploy Code]
-
-    K[Deployment Exercise 2<br>(deployment2.yml)] --> L[Lint]
-    L --> M[Test Code]
-    M --> N[Deploy Code]
-
-
 ## GitHub Actions Workflows Overview
 
 | # | Workflow Name | File | Triggers | Main Steps |
