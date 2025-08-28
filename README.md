@@ -48,25 +48,15 @@ Automates linting, testing, building, and deploying the `basics-exercise` Node.j
 
 **Workflow Steps**
 
-1. **Get code:**  
-   - Checks out the repository code using `actions/checkout@v3`.
-
-2. **Install dependencies:**  
-   - Installs Node.js dependencies in `basics-exercise`.  
-   - Uses `npm ci` if `package-lock.json` exists, otherwise `npm install`.
-
-3. **Lint:**  
-   - Runs `npm run lint` to check code style.
-
-4. **Test code:**  
-   - Runs tests with `npm run test`.
-
-5. **Build code:**  
-   - Builds the project using `npm run build`.
-
-6. **Deploy code:**  
+1. **Deploy:**
+  - Checks out the repository code using `actions/checkout@v3`.  
+   - Installs dependencies in `basics-exercise`.  
+   - Uses `npm ci` if `package-lock.json` exists, otherwise `npm install`.  
+   - Runs `npm run lint` to check code style.  
+   - Runs tests with `npm run test`.  
+   - Builds the project using `npm run build`.  
    - Simulates deployment with `echo "Deploying ..."`.
-
+   - 
 **Usage / Notes**
 
 - Workflow triggers on push, ignoring:
