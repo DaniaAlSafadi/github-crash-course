@@ -15,10 +15,10 @@ Runs tests and deploys the `second-action-react-demo` Node.js project on push or
 **Workflow Steps**
 
 1. **Test:**  
-   - Checks out the repository code using `actions/checkout@v4`.  
-   - Sets up Node.js version 18.  
-   - Installs dependencies using `npm ci` if `package-lock.json` exists, otherwise `npm install`.  
-   - Runs tests with `npm test`.  
+- Checks out the repository code using `actions/checkout@v4`.  
+- Sets up Node.js version 18.  
+- Installs dependencies using `npm ci` if `package-lock.json` exists, otherwise `npm install`.  
+- Runs tests with `npm test`.  
 
 2. **Deploy:**  
 
