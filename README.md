@@ -21,7 +21,7 @@ Runs tests and deploys the `second-action-react-demo` Node.js project on push or
    - Runs tests with `npm test`.  
 
 2. **Deploy:**  
-   - Runs after the test job completes successfully.  
+     :warning: Runs after the test job completes successfully.
    - Checks out the repository code again.  
    - Sets up Node.js version 18.  
    - Installs dependencies.  
