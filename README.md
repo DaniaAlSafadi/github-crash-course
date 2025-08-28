@@ -1,4 +1,3 @@
-
 # Deployment Exercise 2 (deployment2.yml)
 
 ## Description:
