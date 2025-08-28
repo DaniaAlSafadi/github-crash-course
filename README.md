@@ -1,9 +1,9 @@
-# Deployment Exercise 2 (deployment2.yml)
+## Deployment Exercise 2 (deployment2.yml)
 
-## Description:
+**Description**  
 Automates linting, testing, building, and deploying the basics-exercise Node.js project on every push (except changes in certain workflow files).
 
-## Workflow Steps:
+**Workflow Steps**
 
 **Lint:** Checks code style using `npm run lint`.
 
@@ -11,7 +11,7 @@ Automates linting, testing, building, and deploying the basics-exercise Node.js 
 
 **Deploy:** Builds the project using `npm run build` and simulates deployment with `echo "Deploying ..."`.
 
-## Usage / Notes:
+**Usage / Notes**
 
 Dependencies are installed automatically:
 
