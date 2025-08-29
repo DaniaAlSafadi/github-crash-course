@@ -1,4 +1,4 @@
-name: Deploy website
+name: Deploy website  # Using Job Outputs in Other Jobs & Cache Dependencies
 on:
   push:
     branches:
@@ -62,7 +62,7 @@ jobs:
       - name: Build website
         working-directory: events-deep-dive
         run: npm run build
-      - name: Publish JS filename
+      - name: Publish JS filename                  # Example of (Outputs) Simple Value Pass to Another Job 
         id: publish
         working-directory: events-deep-dive
         run:  find dist/assets/*.js -type f -execdir echo 'script-file-js={}' >> $GITHUB_OUTPUT ';' 
