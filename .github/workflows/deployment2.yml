@@ -24,7 +24,7 @@ jobs:
             echo "No lock file found, using npm install"
             npm install
           fi
-
+          
       - name: Lint
         working-directory: basics-exercise
         run: npm run lint 
