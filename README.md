@@ -1,13 +1,34 @@
+# GitHub Actions Workflows
 ## GitHub Actions Workflows Overview
 
 | # | Workflow Name | File | Triggers | Main Steps |
 |---|---------------|------|----------|------------|
-| 1 | Deploy Project | deployment.yml | push (ignoring certain workflows), workflow_dispatch | Install dependencies, Test, Build, Deploy |
-| 2 | Deployment Exercise 1 | deployment1.yml | push (ignoring certain workflows) | Get code, Install dependencies, Lint, Test, Build, Deploy |
-| 3 | Deployment Exercise 2 | deployment2.yml | push (ignoring certain workflows) | Lint, Install dependencies, Test, Build, Deploy |
+| 1 | First Workflow | first-action.yml  | workflow_dispatch | Print greeting, Print goodbye       |
+| 2 | Deploy Project | deployment.yml | push (ignoring certain workflows), workflow_dispatch | Install dependencies, Test, Build, Deploy |
+| 3 | Deployment Exercise 1 | deployment1.yml | push (ignoring certain workflows) | Get code, Install dependencies, Lint, Test, Build, Deploy |
+| 4 | Deployment Exercise 2 | deployment2.yml | push (ignoring certain workflows) | Lint, Install dependencies, Test, Build, Deploy |
 ---
 
-## 1. Deploy Project (deployment.yml)
+## 1. First Workflow (`first-action.yml`)
+
+**Description**  
+The very first workflow project — a simple job that prints a greeting and a goodbye message when manually triggered.
+
+**Workflow Steps**
+
+1. **Print greeting:**  
+   - Runs `echo "Hello World!"`  
+
+2. **Print goodbye:**  
+   - Runs `echo "Done - bye!"`  
+
+**Usage / Notes**
+
+- Triggered manually via `workflow_dispatch`.  
+- Serves as an introductory example of GitHub Actions.  
+- **History:** This was the first project created to get started with GitHub Actions.  
+
+## 2. Deploy Project (deployment.yml)
 
 **Description**  
 Runs tests and deploys the `second-action-react-demo` Node.js project on push or manually via `workflow_dispatch`.
@@ -41,7 +62,7 @@ Runs tests and deploys the `second-action-react-demo` Node.js project on push or
 - Can also be triggered manually via `workflow_dispatch`.
 
 
-## 2. Deployment Exercise 1 (deployment1.yml)
+## 3. Deployment Exercise 1 (deployment1.yml)
 
 **Description**  
 Automates linting, testing, building, and deploying the `basics-exercise` Node.js project on every push (except changes in certain workflow files).
@@ -66,7 +87,7 @@ Automates linting, testing, building, and deploying the `basics-exercise` Node.j
   - `.github/workflows/demo.yml`
 
 
-## 3. Deployment Exercise 2 (deployment2.yml)
+## 4. Deployment Exercise 2 (deployment2.yml)
 
 **Description**  
 Automates linting, testing, building, and deploying the `basics-exercise` Node.js project on every push, excluding changes in certain workflow files.
