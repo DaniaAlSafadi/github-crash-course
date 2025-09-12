@@ -3,10 +3,12 @@
 
 | # | Workflow Name | File | Triggers | Main Steps |
 |---|---------------|------|----------|------------|
-| 1 | First Workflow | first-action.yml  | workflow_dispatch | Print greeting, Print goodbye       |
-| 2 | Deploy Project | deployment.yml | push (ignoring certain workflows), workflow_dispatch | Install dependencies, Test, Build, Deploy |
-| 3 | Deployment Exercise 1 | deployment1.yml | push (ignoring certain workflows) | Get code, Install dependencies, Lint, Test, Build, Deploy |
-| 4 | Deployment Exercise 2 | deployment2.yml | push (ignoring certain workflows) | Lint, Install dependencies, Test, Build, Deploy |
+| 1 | First Workflow | first-action.yml | workflow_dispatch | Print greeting, Print goodbye |
+| 2 | Output Information | output.yml | workflow_dispatch | Output GitHub context |
+| 3 | Handle Issues | issues.yml | issues | Output event details |
+| 4 | Deploy Project | deployment.yml | push (ignoring certain workflows), workflow_dispatch | Install dependencies, Test, Build, Deploy |
+| 5 | Deployment Exercise 1 | deployment1.yml | push (ignoring certain workflows) | Get code, Install dependencies, Lint, Test, Build, Deploy |
+| 6 | Deployment Exercise 2 | deployment2.yml | push (ignoring certain workflows) | Lint, Install dependencies, Test, Build, Deploy |
 ---
 
 ## 1. First Workflow (`first-action.yml`)
@@ -26,7 +28,41 @@ The very first workflow project — a simple job that prints a greeting and a go
 
 - Triggered manually via `workflow_dispatch`.  
 - Serves as an introductory example of GitHub Actions.  
-- **History:** This was the first project created to get started with GitHub Actions.  
+- **History:** This was the first project created to get started with GitHub Actions.
+
+## 2. Output Information (`output.yml`)
+
+**Description**  
+A workflow that prints the entire GitHub context object when triggered manually.
+
+**Workflow Steps**
+
+1. **Output GitHub context:**  
+   - Runs `echo "${{ toJSON(github) }}"`.  
+
+**Usage / Notes**
+
+- Triggered manually via `workflow_dispatch`.  
+- Useful for inspecting available GitHub context variables.  
+
+---
+
+## 3. Handle Issues (`issues.yml`)
+
+**Description**  
+A workflow that triggers whenever a GitHub Issue event occurs, and outputs the full event details.
+
+**Workflow Steps**
+
+1. **Output event details:**  
+   - Runs `echo "${{ toJSON(github.event) }}"`.  
+
+**Usage / Notes**
+
+- Triggered automatically on `issues` events.  
+- Useful for debugging issue-related automation.  
+
+---
 
 ## 2. Deploy Project (`deployment.yml`)
 
