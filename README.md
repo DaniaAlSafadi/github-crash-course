@@ -30,6 +30,8 @@ The very first workflow project — a simple job that prints a greeting and a go
 - Serves as an introductory example of GitHub Actions.  
 - **History:** This was the first project created to get started with GitHub Actions.
 
+---
+
 ## 2. Output Information (`output.yml`)
 
 **Description**  
@@ -64,7 +66,7 @@ A workflow that triggers whenever a GitHub Issue event occurs, and outputs the f
 
 ---
 
-## 2. Deploy Project (`deployment.yml`)
+## 4. Deploy Project (`deployment.yml`)
 
 **Description**  
 Runs tests and deploys the `second-action-react-demo` Node.js project on push or manually via `workflow_dispatch`.
@@ -97,7 +99,9 @@ Runs tests and deploys the `second-action-react-demo` Node.js project on push or
   - `.github/workflows/demo.yml`
 - Can also be triggered manually via `workflow_dispatch`.
 
-## 3. Deployment Exercise 1 (`deployment1.yml`)
+---
+
+## 5. Deployment Exercise 1 (`deployment1.yml`)
 
 **Description**  
 Automates linting, testing, building, and deploying the `basics-exercise` Node.js project on every push (except changes in certain workflow files).
@@ -120,8 +124,10 @@ Automates linting, testing, building, and deploying the `basics-exercise` Node.j
   - `.github/workflows/deployment2.yml`
   - `.github/workflows/demo1.yml`
   - `.github/workflows/demo.yml`
+ 
+  ---
 
-## 4. Deployment Exercise 2 (`deployment2.yml`)
+## 6. Deployment Exercise 2 (`deployment2.yml`)
 
 **Description**  
 Automates linting, testing, building, and deploying the `basics-exercise` Node.js project on every push, excluding changes in certain workflow files.
@@ -160,3 +166,5 @@ Automates linting, testing, building, and deploying the `basics-exercise` Node.j
   - `.github/workflows/deployment.yml`
   - `.github/workflows/demo1.yml`
   - `.github/workflows/demo.yml`
+ 
+---
