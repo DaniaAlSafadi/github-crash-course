@@ -4,9 +4,16 @@ on:
     branches:
       - main
       - dev
+env:
+  MONGODB_DB_NAME: gha-demo
+
 jobs:
   test:
-    environment: testing
+    env: 
+      MONGODB_CLUSTER_ADDRESS: cluster0.vtxfh6l.mongodb.net
+      MONGODB_USERNAME: danias_db_user
+      MONGODB_PASSWORD: fw2yEO25uOUvieb3 
+      PORT: 8080
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
@@ -27,15 +34,17 @@ jobs:
             npm install
           fi
       - name: Run server
-        run: npm start & npx wait-on http://127.0.0.1:XYZ
+        run: npm start & npx wait-on http://127.0.0.1:XYZ:$PORT
       - name: Run tests
         run: npm test
       - name: Output information
-        run: echo "..."
+        run: echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
+  
   deploy:
     needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Output information
         run: |        
-          echo "..."
+          echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
+          echo "MONGODB_DB_NAME: $MONGODB_DB_NAME"
