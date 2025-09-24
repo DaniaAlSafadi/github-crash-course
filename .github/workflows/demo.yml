@@ -8,6 +8,7 @@ on:
       - '.github/workflows/deployment2.yml'
       - '.github/workflows/demo1.yml'
       - '.github/workflows/deployment.yml'
+      - '.github/workflows/deploy.yml'
 
 jobs:
   test:
