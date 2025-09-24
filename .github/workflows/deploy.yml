@@ -34,11 +34,14 @@ jobs:
             npm install
           fi
       - name: Run server
+        working-directory: Variables-Deploy
         run: npm start & npx wait-on http://127.0.0.1:XYZ:$PORT
       - name: Run tests
         run: npm test
+        working-directory: Variables-Deploy
       - name: Output information
-        run: echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
+        run: |
+          echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
   
   deploy:
     needs: test
