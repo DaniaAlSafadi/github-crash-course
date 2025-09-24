@@ -35,9 +35,9 @@ jobs:
             echo "No lock file found, using npm install"
             npm install
           fi
-      - name: Run server
+      - name: Run server and tests
         working-directory: Variables-Deploy
-        run: npm start & npx wait-on http://127.0.0.1:XYZ:$PORT
+        run: npx start-server-and-test "npm start" http://127.0.0.1:$PORT "npm test"
       - name: Run tests
         run: npm test
         working-directory: Variables-Deploy
