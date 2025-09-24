@@ -7,6 +7,7 @@ on:
       - '.github/workflows/deployment2.yml'
       - '.github/workflows/demo1.yml'
       - '.github/workflows/demo.yml'
+      - '.github/workflows/deploy.yml'
 jobs:
   deploy: 
     runs-on: ubuntu-latest 
