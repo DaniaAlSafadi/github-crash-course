@@ -171,37 +171,7 @@ Automates linting, testing, building, and deploying the `basics-exercise` Node.j
   - `.github/workflows/demo.yml`
  
 ---
-
-## 7. Deployment Workflow (`deploy.yml`)
-
-**Description**  
-Runs tests and deploys the `Variables-Deploy` project on push to `main` or `dev` branches, or when triggered manually.
-
-**Workflow Steps**
-
-1. **Test:**  
-   - Gets the code using `actions/checkout@v3`.  
-   - Caches dependencies with `actions/cache@v3`.  
-   - Installs dependencies (using `npm ci` if a lock file exists).  
-   - Starts the server with `npm start` and waits for it to be available.  
-   - Runs tests with `npm test`.  
-   - Outputs test information.  
-
-2. **Deploy:**  
-
-🔴 Runs after the test job completes successfully.
-
-   - Outputs deployment information (placeholder step).  
-
-**Usage / Notes**
-
-- Triggered by push to `main` or `dev` branches.  
-- Can also be triggered manually via `workflow_dispatch`.  
-- Uses caching to speed up dependency installation.  
-
----
-
-## 8. Deploy Website (`demo.yml`)
+## 7. Deploy Website (`demo.yml`)
 
 **Description**  
 Builds and deploys the `events-deep-dive` project on push to the `master` branch, ignoring changes to certain workflow files. Demonstrates using **job outputs** and caching.
@@ -240,5 +210,35 @@ Builds and deploys the `events-deep-dive` project on push to the `master` branch
 - Triggered on push to the `master` branch.  
 - Ignores changes to certain workflow files to prevent redundant runs.  
 - Demonstrates passing values between jobs using outputs.  
+
+
+---
+
+## 8. Deployment Workflow (`deploy.yml`)
+
+**Description**  
+Runs tests and deploys the `Variables-Deploy` project on push to `main` or `dev` branches, or when triggered manually.
+
+**Workflow Steps**
+
+1. **Test:**  
+   - Gets the code using `actions/checkout@v3`.  
+   - Caches dependencies with `actions/cache@v3`.  
+   - Installs dependencies (using `npm ci` if a lock file exists).  
+   - Starts the server with `npm start` and waits for it to be available.  
+   - Runs tests with `npm test`.  
+   - Outputs test information.  
+
+2. **Deploy:**  
+
+🔴 Runs after the test job completes successfully.
+
+   - Outputs deployment information (placeholder step).  
+
+**Usage / Notes**
+
+- Triggered by push to `main` or `dev` branches.  
+- Can also be triggered manually via `workflow_dispatch`.  
+- Uses caching to speed up dependency installation.  
 
 ---
