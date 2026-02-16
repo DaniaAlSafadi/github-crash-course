@@ -9,8 +9,8 @@
 | 4 | Deploy Project | deployment.yml | push (ignoring certain workflows), workflow_dispatch | Install dependencies, Test, Build, Deploy |
 | 5 | Deployment Exercise 1 | deployment1.yml | push (ignoring certain workflows) | Get code, Install dependencies, Lint, Test, Build, Deploy |
 | 6 | Deployment Exercise 2 | deployment2.yml | push (ignoring certain workflows) | Lint, Install dependencies, Test, Build, Deploy |
-| 7 | Deployment Workflow   | deploy.yml | push (main, dev), workflow_dispatch | Get code, Cache dependencies, Install, Run server, Test, Deploy |
-| 8 | Deploy Website        | demo.yml   | push (master, ignoring some workflows) | Get code, Cache dependencies, Lint, Test, Build, Upload artifacts, Deploy |
+| 7 | Deploy Website        | demo.yml   | push (master, ignoring some workflows) | Get code, Cache dependencies, Lint, Test, Build, Upload artifacts, Deploy |
+| 8 | Deployment Workflow   | deploy.yml | push (main, dev), workflow_dispatch | Get code, Cache dependencies, Install, Run server, Test, Deploy |
 
 ---
 
