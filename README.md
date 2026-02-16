@@ -144,7 +144,7 @@ Automates linting, testing, building, and deploying the `basics-exercise` Node.j
      - Uses `npm ci` if `package-lock.json` exists, otherwise `npm install`.  
    - Runs `npm run lint` to check code style.  
 
-3. **Test:**  
+ 2. **Test:**  
 
 🔴 Runs after the lint job completes successfully.
 
@@ -178,7 +178,8 @@ Builds and deploys the `events-deep-dive` project on push to the `master` branch
 
 **Workflow Steps**
 
-1. **Test:**  
+1. **Test:**
+
    - Gets the code using `actions/checkout@v4`.  
    - Caches dependencies with `actions/cache@v4`.  
    - Installs dependencies in `events-deep-dive`.  
@@ -217,28 +218,37 @@ Builds and deploys the `events-deep-dive` project on push to the `master` branch
 ## 8. Deployment Workflow (`deploy.yml`)
 
 **Description**  
-Runs tests and deploys the `Variables-Deploy` project on push to `main` or `dev` branches, or when triggered manually.
+Runs tests and deploys the `Variables-Deploy` project using GitHub Secrets on push to `main` or `dev` branches, or when triggered manually.
 
 **Workflow Steps**
 
-1. **Test:**  
+1. **Test:**
+
    - Gets the code using `actions/checkout@v3`.  
    - Caches dependencies with `actions/cache@v3`.  
-   - Installs dependencies (using `npm ci` if a lock file exists).  
+   - Installs dependencies inside the `Variables-Deploy` directory using npm ci
+   - Uses environment variables:
+         - `MONGODB_DB_NAME` (workflow-level)
+         - `MONGODB_CLUSTER_ADDRESS` (job-level)
+         - `MONGODB_USERNAME` and `MONGODB_PASSWORD` from GitHub Secrets
+         - `PORT` (default: 8080)
    - Starts the server with `npm start` and waits for it to be available.  
-   - Runs tests with `npm test`.  
-   - Outputs test information.  
+   - Runs tests with `npm test` via `start-server-and-test`.  
+   - Outputs selected environment information for verification.  
 
 2. **Deploy:**  
 
 🔴 Runs after the test job completes successfully.
 
-   - Outputs deployment information (placeholder step).  
+   - Outputs environment information (placeholder deployment step).  
 
 **Usage / Notes**
 
 - Triggered by push to `main` or `dev` branches.  
 - Can also be triggered manually via `workflow_dispatch`.  
-- Uses caching to speed up dependency installation.  
+- Uses GitHub Secrets (`MONGODB_USERNAME`, `MONGODB_PASSWORD`) for secure credential management.
+- Demonstrates workflow-level and job-level environment variables.
+- Uses caching to speed up dependency installation.
+- Deployment runs only if all tests pass.
 
 ---
