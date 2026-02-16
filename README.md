@@ -11,7 +11,7 @@
 | 6 | Deployment Exercise 2 | deployment2.yml | push (ignoring certain workflows) | Lint, Install dependencies, Test, Build, Deploy |
 | 7 | Deploy Website        | demo.yml   | push (master, ignoring some workflows) | Get code, Cache dependencies, Lint, Test, Build, Upload artifacts, Deploy |
 | 8 | Deployment Workflow   | deploy.yml | push (main, dev), workflow_dispatch | Get code, Cache dependencies, Install, Run server, Test, Deploy |
-
+| 9 | Deploy with Env Secrets   | deploy-with-env-secrets.yml | push (main, dev), workflow_dispatch | Get code, Cache dependencies, Install, Run server, Test using secrets, Deploy |
 ---
 
 ## 1. First Workflow (`first-action.yml`)
@@ -248,6 +248,47 @@ Runs tests and deploys the `Variables-Deploy` project using GitHub Secrets on pu
 - Can also be triggered manually via `workflow_dispatch`.  
 - Uses GitHub Secrets (`MONGODB_USERNAME`, `MONGODB_PASSWORD`) for secure credential management.
 - Demonstrates workflow-level and job-level environment variables.
+- Uses caching to speed up dependency installation.
+- Deployment runs only if all tests pass.
+
+---
+
+## 9. Deploy with Env Secrets (`deploy-with-env-secrets.yml`)
+
+**Description**
+Runs tests and deploys the `Variables-Deploy` project using GitHub Secrets and environment variables.
+Triggered on push to `main` or `dev` branches, or manually via `workflow_dispatch`.
+Demonstrates using a dedicated environment (`testing`), caching, and running a server before executing tests.
+
+**Workflow Steps**
+
+1. **Test:**
+
+   - Gets the code using `actions/checkout@v3`.  
+   - Caches dependencies with `actions/cache@v3`.  
+   - Installs dependencies inside the `Variables-Deploy` directory using npm ci
+   - Uses environment variables:
+         - `MONGODB_DB_NAME` (workflow-level)
+         - `MONGODB_CLUSTER_ADDRESS` (job-level)
+         - `MONGODB_USERNAME` and `MONGODB_PASSWORD` from GitHub Secrets
+         - `PORT` (default: 8080)
+   - Starts the server with `npm start` and waits for it to be available.  
+   - Runs tests with `npm test` via `start-server-and-test`.  
+   - Outputs selected environment information for verification.
+
+2. **Deploy:** 
+
+🔴 Runs after the test job completes successfully.
+
+   - Outputs environment information (placeholder deployment step).  
+
+**Usage / Notes**
+
+- Triggered by push to `main` or `dev` branches.  
+- Can also be triggered manually via `workflow_dispatch`.  
+- Uses GitHub Secrets (`MONGODB_USERNAME`, `MONGODB_PASSWORD`) for secure credential management.
+- Demonstrates workflow-level and job-level environment variables.
+- Uses a dedicated environment (`testing`) for the test job.
 - Uses caching to speed up dependency installation.
 - Deployment runs only if all tests pass.
 
