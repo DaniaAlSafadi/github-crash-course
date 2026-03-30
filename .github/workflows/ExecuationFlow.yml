@@ -1,0 +1,105 @@
+name: Website Deployment
+on:
+  push:
+    branches:
+      - main
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies 
+        working-directory: Execuation-Flow
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "Using npm ci"
+            npm ci
+          else
+            echo "No lock file found, using npm install"
+            npm install
+          fi
+      - name: Lint code
+        working-directory: Execuation-Flow
+        run: npm run lint
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies 
+        working-directory: Execuation-Flow
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "Using npm ci"
+            npm ci
+          else
+            echo "No lock file found, using npm install"
+            npm install
+          fi
+      - name: Test code
+        working-directory: Execuation-Flow
+        run: npm run test
+      - name: Upload test report
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report
+          path: test.json
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('Execuation-Flow/package-lock.json') }}
+      - name: Install dependencies 
+        working-directory: Execuation-Flow
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "Using npm ci"
+            npm ci
+          else
+            echo "No lock file found, using npm install"
+            npm install
+          fi
+      - name: Build website
+        id: build-website
+        working-directory: Execuation-Flow
+        run: npm run build
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-files
+          path: Execuation-Flow/dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-files
+          path: Execuation-Flow
+      - name: Output contents
+        working-directory: Execuation-Flow
+        run: ls
+      - name: Deploy
+        working-directory: Execuation-Flow
+        run: echo "Deploying..."
