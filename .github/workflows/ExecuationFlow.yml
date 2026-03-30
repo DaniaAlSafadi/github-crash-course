@@ -4,6 +4,12 @@ on:
     branches:
       - main
   workflow_dispatch:
+  paths-ignore:
+      - '.github/workflows/deployment1.yml'
+      - '.github/workflows/deployment2.yml'
+      - '.github/workflows/demo1.yml'
+      - '.github/workflows/deployment.yml'
+      - '.github/workflows/deploy.yml'
   
 jobs:
   lint:
