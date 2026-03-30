@@ -1,15 +1,8 @@
 name: Website Deployment
 on:
   push:
-    branches:
-      - master
-    paths-ignore:
-      - '.github/workflows/deployment1.yml'
-      - '.github/workflows/deployment2.yml'
-      - '.github/workflows/demo1.yml'
-      - '.github/workflows/demo.yml'
-      - '.github/workflows/deployment.yml'
-      - '.github/workflows/deploy.yml'
+    paths:
+      - 'Execuation-Flow/**'
   workflow_dispatch:
 
 jobs:
