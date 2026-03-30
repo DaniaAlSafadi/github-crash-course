@@ -2,7 +2,7 @@ name: Website Deployment
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch:
   paths-ignore:
       - '.github/workflows/deployment1.yml'
