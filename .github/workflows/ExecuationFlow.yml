@@ -113,6 +113,7 @@ jobs:
         working-directory: Execuation-Flow
         run: echo "Deploying..."
   report:    # run this job only if other jobs failed
+    needs: [lint,deploy]
     if: failure()
     runs-on: ubuntu-latest
     steps:
