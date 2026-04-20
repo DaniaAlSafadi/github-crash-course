@@ -24,6 +24,7 @@ jobs:
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies 
         working-directory: Execuation-Flow
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           if [ -f package-lock.json ]; then
             echo "Using npm ci"
@@ -48,6 +49,7 @@ jobs:
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies 
         working-directory: Execuation-Flow
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           if [ -f package-lock.json ]; then
             echo "Using npm ci"
@@ -80,6 +82,7 @@ jobs:
           key: deps-node-modules-${{ hashFiles('Execuation-Flow/package-lock.json') }}
       - name: Install dependencies 
         working-directory: Execuation-Flow
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           if [ -f package-lock.json ]; then
             echo "Using npm ci"
