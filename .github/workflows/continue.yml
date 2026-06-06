@@ -1,8 +1,6 @@
 name: Website Deployment (continue-on-error)
 on:
   push:
-    paths:
-      - '.github/workflows/continue.yml'
     
   workflow_dispatch:
 
