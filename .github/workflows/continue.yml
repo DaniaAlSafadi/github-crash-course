@@ -1,4 +1,4 @@
-name: Website Deployment
+name: Website Deployment (continue-on-error)
 on:
   push:
     paths-ignore:
