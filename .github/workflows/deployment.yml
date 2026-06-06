@@ -1,12 +1,12 @@
 name: Deploy Project
 
 on:
-  push:
-    paths-ignore:
-      - '.github/workflows/deployment1.yml'
-      - '.github/workflows/deployment2.yml'
-      - '.github/workflows/demo1.yml'
-      - '.github/workflows/demo.yml'
+# push:
+  # paths-ignore:
+  #   - '.github/workflows/deployment1.yml'
+  #   - '.github/workflows/deployment2.yml'
+  #   - '.github/workflows/demo1.yml'
+  #   - '.github/workflows/demo.yml'
   workflow_dispatch:
 
 jobs: 

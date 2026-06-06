@@ -1,9 +1,9 @@
 name: Deployment using secrets
 on:
-  push:
-    branches:
-      - main
-      - dev
+# push:
+#  branches:
+#     - main
+#     - dev
   workflow_dispatch:
 
 env:

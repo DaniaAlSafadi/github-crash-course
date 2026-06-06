@@ -1,9 +1,5 @@
 name: Website Deployment (Conditional execuation via if)
-on:
-  push:
-    paths:
-      - '.github/workflows/ExecuationFlow.yml'
-    
+on:    
   workflow_dispatch:
 
 jobs:
