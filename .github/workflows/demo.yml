@@ -1,14 +1,9 @@
 name: Deploy website  # Using Job Outputs in Other Jobs & Cache Dependencies
 on:
-  push:
-    branches:
-      - master
-    paths-ignore:
-      - '.github/workflows/deployment1.yml'
-      - '.github/workflows/deployment2.yml'
-      - '.github/workflows/demo1.yml'
-      - '.github/workflows/deployment.yml'
-      - '.github/workflows/deploy.yml'
+# push:
+#   branches:
+#     - master
+  workflow_dispatch: 
 
 jobs:
   test:
